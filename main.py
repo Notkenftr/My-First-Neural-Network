@@ -32,11 +32,10 @@ if __name__ == '__main__':
     y_train = []
 
     for pattern in all_patterns:
-        x_train.append([list(pattern)])  # giữ đúng shape (1,5)
+        x_train.append([list(pattern)])
 
-        # rule: tổng bit >= 3 thì class 1
         label = 1 if sum(pattern) >= 3 else 0
-        y_train.append([[label]])  # giữ đúng shape (1,1)
+        y_train.append([[label]])
 
     x_train = np.array(x_train)
     y_train = np.array(y_train)
