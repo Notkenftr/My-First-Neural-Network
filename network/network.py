@@ -44,7 +44,7 @@ class Network:
             result.append(output)
         return result
 
-    def fit(self,x_train,y_train,epochs,learning_rate):
+    def fit(self,x_train,y_train,epochs,learning_rate,debug=False):
         n = len(x_train)
         for i in range(epochs):
             err = 0
@@ -57,5 +57,5 @@ class Network:
                 for layer in reversed(self.layers):
                     error = layer.backward_propagation(error,learning_rate)
             err = err / n
-
-            print(f"epoch {i+1}/{epochs}   error={err}")
+            if debug:
+                print(f"epoch {i+1}/{epochs}   error={err}")

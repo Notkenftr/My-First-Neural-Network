@@ -55,17 +55,17 @@ if __name__ == '__main__':
     ))
     net.add(FCLayer(
         input_shape=(1,3),
-        output_shape=(1,1)
+        output_shape=(1,3)
     ))
     net.add(ActivationLayer(
-        input_shape=(1,1),
+        input_shape=(1,3),
         output_shape=(1,1),
         activation=sigmoid,
         activation_prime=sigmoid_prime
     ))
     net.setup_loss(loss_func,loss_func_prime)
-    np.load("weight.npz")
-    net.fit(x_train,y_train,epochs=1000,learning_rate=0.1)
-    net.save("weight")
+    net.load("weight_2.npz")
+    net.fit(x_train,y_train,epochs=1,learning_rate=1,debug=True)
+    #net.save("weight_2")
 
-    print(net.predict([[1,1,1,0,0]]))
+    print(net.predict([[1,0,0,1,0]]))
